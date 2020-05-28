@@ -1,10 +1,7 @@
-// server.js
-// where your node app starts
-
-// we've started you off with Express (https://expressjs.com/)
-// but feel free to use whatever libraries or frameworks you'd like through `package.json`.
 const express = require("express");
 const app = express();
+const port = 3000;
+app.listen(port, () => console.log(`Server start at link http://localhost:${port}`))
 
 app.set("view engine", "pug");
 app.set("views", "./views");
@@ -20,7 +17,7 @@ var listTodos = [
 ];
 
 app.get("/", (req, res) => {
-  res.render("index");
+  res.render('index')
 });
 
 app.get("/todos", function(req, res) {
@@ -37,7 +34,6 @@ app.get("/todos", function(req, res) {
   });
 });
 
-
 app.get("/todos/create", (req, res) => {
   res.render("todos/create");
 });
@@ -46,15 +42,3 @@ app.post("/todos/create", function(req, res) {
   listTodos.push(req.body)
   res.redirect("back")
   });
-
-// bạn post ngay trên todos/create cũng đc 
-// nếu xóa cái create.pug đi ảnh hưởng gì ko bạn
-
-// hừm miễn là bạn ko gọi đến app.get("/todos/create") thì nó không ảnh hưởng gì dda
-// @@ mà mình nghĩ nên xóa đi cho nó gọn :))
-// oke mình hiểu bài rồi, cám ơn bạn nhiều hihi
-// không có gì ^^ bạn qua bấm hoàn thành giúp mình nha :3
-// oke fine star , good support :DDD
- app.listen(process.env.PORT, () => {
-  console.log("Server listening on port ");
-});
