@@ -26,8 +26,9 @@ app.get("/", (req, res) => {
  
 app.get("/todos", function(req, res) {
   var q = req.query.q;
+  var tempArr = db.get('users').value()
   res.render("todos/index", {
-    todos: db.get('users').value(),
+    todos: tempArr
   });
 });
 
