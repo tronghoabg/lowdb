@@ -1,0 +1,15 @@
+
+form(action="/user/create", method="POST")
+  input(type="text", name="name") 
+  button Thêm
+
+form(action="/user", method="GET")
+  input(type="text", name="q", value=temp)
+  button Tìm Kiếm
+
+ul
+  each val in user
+    li  
+      span=val.name
+      span &nbsp    
+      a(href='user/' + val.id + '/delete') Xóa
