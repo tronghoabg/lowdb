@@ -1,6 +1,6 @@
 
 form(action="/todos/create", method="POST")
-  input(type="text", name="content") 
+  input(type="text", name="text") 
   button Thêm
 
 form(action="/todos", method="GET")
@@ -9,4 +9,4 @@ form(action="/todos", method="GET")
 
 ul
   each val in todos
-    li= val.content
+    li= val.text
