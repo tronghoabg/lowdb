@@ -1,6 +1,16 @@
 const express = require("express");
 const app = express();
 const port = 3000;
+var low = require("lowdb");
+var FileSync = require('lowdb/adapters/FileSync');
+
+var adapter = new FileSync('db.json');
+var db = low(adapter);
+
+// Set some defaults (required if your JSON file is empty)
+db.defaults({user: {}})
+  .write()
+
 app.listen(port, () => console.log(`Server start at link http://localhost:${port}`))
 
 app.set("view engine", "pug");
@@ -13,7 +23,7 @@ var listTodos = [
   { id: 1, content: "Đi chợ" },
   { id: 1, content: "Nấu cơm" },
   { id: 1, content: "Rửa bát" },
-  { id: 1, content: "Học tại codersX" }
+  { id: 1, content: "Học tại codersX" },
 ];
 
 app.get("/", (req, res) => {
